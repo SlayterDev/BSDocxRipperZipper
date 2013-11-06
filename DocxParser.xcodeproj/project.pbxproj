@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02729716182A04E300BDB38D /* document.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02729715182A04E300BDB38D /* document.xml */; };
+		024BBA02182A0CFB00002FCC /* document.xml in Resources */ = {isa = PBXBuildFile; fileRef = 024BBA01182A0CFB00002FCC /* document.xml */; };
 		02F445F2182A01360081585D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F1182A01360081585D /* Foundation.framework */; };
 		02F445F4182A01360081585D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F3182A01360081585D /* CoreGraphics.framework */; };
 		02F445F6182A01360081585D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F5182A01360081585D /* UIKit.framework */; };
@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02729715182A04E300BDB38D /* document.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document.xml; sourceTree = "<group>"; };
+		024BBA01182A0CFB00002FCC /* document.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document.xml; sourceTree = "<group>"; };
 		02F445EE182A01360081585D /* DocxParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocxParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F445F1182A01360081585D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02F445F3182A01360081585D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,7 +120,7 @@
 		02F445F7182A01360081585D /* DocxParser */ = {
 			isa = PBXGroup;
 			children = (
-				02729715182A04E300BDB38D /* document.xml */,
+				024BBA01182A0CFB00002FCC /* document.xml */,
 				02F44600182A01360081585D /* AppDelegate.h */,
 				02F44601182A01360081585D /* AppDelegate.m */,
 				02F44603182A01360081585D /* Main.storyboard */,
@@ -251,7 +251,7 @@
 			files = (
 				02F4460A182A01360081585D /* Images.xcassets in Resources */,
 				02F445FC182A01360081585D /* InfoPlist.strings in Resources */,
-				02729716182A04E300BDB38D /* document.xml in Resources */,
+				024BBA02182A0CFB00002FCC /* document.xml in Resources */,
 				02F44605182A01360081585D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

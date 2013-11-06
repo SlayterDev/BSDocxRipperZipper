@@ -33,20 +33,20 @@
 }
 
 -(void) loadString {
-    GDataXMLElement *body = [[self.xmlDoc.rootElement elementsForName:@"w:body"] objectAtIndex:0];
-    NSArray *paragraphs = [body elementsForName:@"w:p"];
+    GDataXMLElement *body = [[self.xmlDoc.rootElement elementsForName:@"w:body"] objectAtIndex:0]; // get body element
+    NSArray *paragraphs = [body elementsForName:@"w:p"]; // find all parapgraphs
     for (GDataXMLElement *paragraph in paragraphs) {
         NSLog(@"Found a paragraph!");
         
-        NSArray *runs = [paragraph elementsForName:@"w:r"];
+        NSArray *runs = [paragraph elementsForName:@"w:r"]; // find all runs in each paragraph
         for (GDataXMLElement *run in runs) {
             NSLog(@"Found a run!");
-            GDataXMLElement *runTextElem = [[run elementsForName:@"w:t"] objectAtIndex:0];
+            GDataXMLElement *runTextElem = [[run elementsForName:@"w:t"] objectAtIndex:0];   // get the text of it exists
             if (runTextElem)
-                finalString = [finalString stringByAppendingString:runTextElem.stringValue];
+                finalString = [finalString stringByAppendingString:runTextElem.stringValue]; // add text from run to final string
         }
         
-        finalString = [finalString stringByAppendingString:@"\n"];
+        finalString = [finalString stringByAppendingString:@"\n"]; // add a new line after each paragraph
     }
     
     NSLog(@"%@", finalString);
