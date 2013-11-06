@@ -129,9 +129,9 @@
 				02F44603182A01360081585D /* Main.storyboard */,
 				02F44606182A01360081585D /* ViewController.h */,
 				02F44607182A01360081585D /* ViewController.m */,
+				02F44629182A01BB0081585D /* BSDocxParser */,
 				02F44609182A01360081585D /* Images.xcassets */,
 				02F445F8182A01360081585D /* Supporting Files */,
-				02F44629182A01BB0081585D /* BSDocxParser */,
 			);
 			path = DocxParser;
 			sourceTree = "<group>";
