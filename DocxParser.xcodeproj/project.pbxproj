@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		02293D86182ADFCB005F620A /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 02293D85182ADFCB005F620A /* UIColor+HexString.m */; };
+		02293D88182AE789005F620A /* document.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02293D87182AE789005F620A /* document.xml */; };
 		024BBA05182A0E8900002FCC /* BSDocxTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 024BBA04182A0E8900002FCC /* BSDocxTextStorage.m */; };
-		024BBA07182A133600002FCC /* document.xml in Resources */ = {isa = PBXBuildFile; fileRef = 024BBA06182A133600002FCC /* document.xml */; };
 		02F445F2182A01360081585D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F1182A01360081585D /* Foundation.framework */; };
 		02F445F4182A01360081585D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F3182A01360081585D /* CoreGraphics.framework */; };
 		02F445F6182A01360081585D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F5182A01360081585D /* UIKit.framework */; };
@@ -41,9 +41,9 @@
 /* Begin PBXFileReference section */
 		02293D84182ADFCB005F620A /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		02293D85182ADFCB005F620A /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
+		02293D87182AE789005F620A /* document.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document.xml; sourceTree = "<group>"; };
 		024BBA03182A0E8900002FCC /* BSDocxTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDocxTextStorage.h; sourceTree = "<group>"; };
 		024BBA04182A0E8900002FCC /* BSDocxTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDocxTextStorage.m; sourceTree = "<group>"; };
-		024BBA06182A133600002FCC /* document.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document.xml; sourceTree = "<group>"; };
 		02F445EE182A01360081585D /* DocxParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocxParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F445F1182A01360081585D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02F445F3182A01360081585D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -126,7 +126,7 @@
 		02F445F7182A01360081585D /* DocxParser */ = {
 			isa = PBXGroup;
 			children = (
-				024BBA06182A133600002FCC /* document.xml */,
+				02293D87182AE789005F620A /* document.xml */,
 				02F44600182A01360081585D /* AppDelegate.h */,
 				02F44601182A01360081585D /* AppDelegate.m */,
 				02F44603182A01360081585D /* Main.storyboard */,
@@ -261,7 +261,7 @@
 			files = (
 				02F4460A182A01360081585D /* Images.xcassets in Resources */,
 				02F445FC182A01360081585D /* InfoPlist.strings in Resources */,
-				024BBA07182A133600002FCC /* document.xml in Resources */,
+				02293D88182AE789005F620A /* document.xml in Resources */,
 				02F44605182A01360081585D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

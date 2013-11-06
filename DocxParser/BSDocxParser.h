@@ -12,10 +12,12 @@
 
 @interface BSDocxParser : NSObject {
     NSMutableAttributedString *finalString;
+	NSMutableAttributedString *runString;
     
     UIFontDescriptor *fontDescriptor;
     UIFontDescriptor *boldDescriptor;
 	UIFontDescriptor *italicDescriptor;
+	
     UIFont *boldFont;
     UIFont *normalFont;
 	UIFont *italicFont;
