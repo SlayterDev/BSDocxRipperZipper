@@ -21,6 +21,11 @@
     UIFont *boldFont;
     UIFont *normalFont;
 	UIFont *italicFont;
+	UIFont *currentFont;
+	
+	float fontSize;
+	BOOL runIsBold;
+	BOOL runIsItalic;
 }
 
 @property (nonatomic, strong) NSURL *fileURL;
