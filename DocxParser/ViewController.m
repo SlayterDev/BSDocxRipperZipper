@@ -22,7 +22,7 @@
     BSDocxParser *parser = [[BSDocxParser alloc] initWithFileURL:[self getDocURL]];
     [parser loadDocument];
     
-    self.textView.text = [parser getFinalString];
+    self.textView.attributedText = [parser getFinalString];
 }
 
 -(NSURL *) getDocURL {

@@ -10,7 +10,12 @@
 #import "GDataXMLNode.h"
 
 @interface BSDocxParser : NSObject {
-    NSString *finalString;
+    NSMutableAttributedString *finalString;
+    
+    UIFontDescriptor *fontDescriptor;
+    UIFontDescriptor *boldDescriptor;
+    UIFont *boldFont;
+    UIFont *normalFont;
 }
 
 @property (nonatomic, strong) NSURL *fileURL;
@@ -18,6 +23,6 @@
 
 -(id) initWithFileURL:(NSURL *)fileURL;
 -(void) loadDocument;
--(NSString *) getFinalString;
+-(NSAttributedString *) getFinalString;
 
 @end

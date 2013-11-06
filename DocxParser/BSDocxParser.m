@@ -13,8 +13,17 @@
 -(id) initWithFileURL:(NSURL *)fileURL {
     if ((self = [super init])) {
         self.fileURL = fileURL;
+        
+        [self setupFontDescriptor];
     }
     return self;
+}
+
+-(void) setupFontDescriptor {
+    fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+    boldDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+    boldFont = [UIFont fontWithDescriptor:boldDescriptor size:0.0];
+    normalFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
 -(void) loadDocument {
@@ -28,7 +37,8 @@
     }
     
     //NSLog(@"%@", self.xmlDoc.rootElement);
-    finalString = @"";
+    finalString = [[NSMutableAttributedString alloc] initWithString:@""];
+    //[[finalString mutableString] setString:@""];
     [self loadString];
 }
 
@@ -42,17 +52,32 @@
         for (GDataXMLElement *run in runs) {
             NSLog(@"Found a run!");
             GDataXMLElement *runTextElem = [[run elementsForName:@"w:t"] objectAtIndex:0];   // get the text of it exists
-            if (runTextElem)
-                finalString = [finalString stringByAppendingString:runTextElem.stringValue]; // add text from run to final string
+            if (runTextElem) {
+                //finalString = [finalString stringByAppendingString:runTextElem.stringValue]; // add text from run to final string
+                NSAttributedString *runString = [[NSAttributedString alloc] initWithString:runTextElem.stringValue attributes:@{NSFontAttributeName: normalFont}];
+                
+                GDataXMLElement *rPr = [[run elementsForName:@"w:rPr"] objectAtIndex:0];
+                GDataXMLElement *boldTrait = [[rPr elementsForName:@"w:b"] objectAtIndex:0];
+                if (boldTrait.XMLString) {
+                    if ([boldTrait.XMLString hasSuffix:@"w:val=\"1\"/>"]) {
+                        NSLog(@"SET BOLD YES");
+                        runString = [[NSAttributedString alloc] initWithString:runTextElem.stringValue attributes:@{NSFontAttributeName: boldFont}];
+                        NSLog(@"Run: %@", runString.string);
+                    }
+                }
+                
+                [finalString appendAttributedString:runString];
+                NSLog(@"Final: %@", finalString.string);
+            }
         }
         
-        finalString = [finalString stringByAppendingString:@"\n"]; // add a new line after each paragraph
+        [[finalString mutableString] appendString:@"\n"]; // add a new line after each paragraph
     }
     
-    NSLog(@"%@", finalString);
+    NSLog(@"%@", finalString.string);
 }
 
--(NSString *) getFinalString {
+-(NSAttributedString *) getFinalString {
     return finalString;
 }
 
