@@ -18,6 +18,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    BSDocxParser *parser = [[BSDocxParser alloc] initWithFileURL:[self getDocURL]];
+    [parser loadDocument];
+    
+    self.textView.text = [parser getFinalString];
+}
+
+-(NSURL *) getDocURL {
+    return [[NSBundle mainBundle] URLForResource:@"document" withExtension:@"xml"];
 }
 
 - (void)didReceiveMemoryWarning

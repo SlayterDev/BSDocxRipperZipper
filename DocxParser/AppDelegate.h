@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GDataXMLNode.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

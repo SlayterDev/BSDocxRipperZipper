@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BSDocxParser.h"
 
 @interface ViewController : UIViewController
+
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end

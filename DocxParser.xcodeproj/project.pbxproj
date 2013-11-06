@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02729716182A04E300BDB38D /* document.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02729715182A04E300BDB38D /* document.xml */; };
 		02F445F2182A01360081585D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F1182A01360081585D /* Foundation.framework */; };
 		02F445F4182A01360081585D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F3182A01360081585D /* CoreGraphics.framework */; };
 		02F445F6182A01360081585D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F5182A01360081585D /* UIKit.framework */; };
@@ -21,6 +22,8 @@
 		02F44613182A01370081585D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F5182A01360081585D /* UIKit.framework */; };
 		02F4461B182A01370081585D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02F44619182A01370081585D /* InfoPlist.strings */; };
 		02F4461D182A01370081585D /* DocxParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F4461C182A01370081585D /* DocxParserTests.m */; };
+		02F44628182A01B60081585D /* BSDocxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F44627182A01B60081585D /* BSDocxParser.m */; };
+		02F4462C182A02C60081585D /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F4462B182A02C60081585D /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02729715182A04E300BDB38D /* document.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document.xml; sourceTree = "<group>"; };
 		02F445EE182A01360081585D /* DocxParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocxParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F445F1182A01360081585D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02F445F3182A01360081585D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +57,10 @@
 		02F44618182A01370081585D /* DocxParserTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DocxParserTests-Info.plist"; sourceTree = "<group>"; };
 		02F4461A182A01370081585D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		02F4461C182A01370081585D /* DocxParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocxParserTests.m; sourceTree = "<group>"; };
+		02F44626182A01B60081585D /* BSDocxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDocxParser.h; sourceTree = "<group>"; };
+		02F44627182A01B60081585D /* BSDocxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDocxParser.m; sourceTree = "<group>"; };
+		02F4462A182A02C60081585D /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		02F4462B182A02C60081585D /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,7 @@
 		02F445F7182A01360081585D /* DocxParser */ = {
 			isa = PBXGroup;
 			children = (
+				02729715182A04E300BDB38D /* document.xml */,
 				02F44600182A01360081585D /* AppDelegate.h */,
 				02F44601182A01360081585D /* AppDelegate.m */,
 				02F44603182A01360081585D /* Main.storyboard */,
@@ -119,6 +128,7 @@
 				02F44607182A01360081585D /* ViewController.m */,
 				02F44609182A01360081585D /* Images.xcassets */,
 				02F445F8182A01360081585D /* Supporting Files */,
+				02F44629182A01BB0081585D /* BSDocxParser */,
 			);
 			path = DocxParser;
 			sourceTree = "<group>";
@@ -150,6 +160,17 @@
 				02F44619182A01370081585D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		02F44629182A01BB0081585D /* BSDocxParser */ = {
+			isa = PBXGroup;
+			children = (
+				02F4462A182A02C60081585D /* GDataXMLNode.h */,
+				02F4462B182A02C60081585D /* GDataXMLNode.m */,
+				02F44626182A01B60081585D /* BSDocxParser.h */,
+				02F44627182A01B60081585D /* BSDocxParser.m */,
+			);
+			name = BSDocxParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +251,7 @@
 			files = (
 				02F4460A182A01360081585D /* Images.xcassets in Resources */,
 				02F445FC182A01360081585D /* InfoPlist.strings in Resources */,
+				02729716182A04E300BDB38D /* document.xml in Resources */,
 				02F44605182A01360081585D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				02F44608182A01360081585D /* ViewController.m in Sources */,
+				02F44628182A01B60081585D /* BSDocxParser.m in Sources */,
+				02F4462C182A02C60081585D /* GDataXMLNode.m in Sources */,
 				02F44602182A01360081585D /* AppDelegate.m in Sources */,
 				02F445FE182A01360081585D /* main.m in Sources */,
 			);
@@ -380,7 +404,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DocxParser/DocxParser-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "DocxParser/DocxParser-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -393,7 +423,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DocxParser/DocxParser-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "DocxParser/DocxParser-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -460,6 +496,7 @@
 				02F44622182A01370081585D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02F44623182A01370081585D /* Build configuration list for PBXNativeTarget "DocxParserTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +505,7 @@
 				02F44625182A01370081585D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
