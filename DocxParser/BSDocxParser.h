@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "GDataXMLNode.h"
+#include "UIColor+HexString.h"
 
 @interface BSDocxParser : NSObject {
     NSMutableAttributedString *finalString;
     
     UIFontDescriptor *fontDescriptor;
     UIFontDescriptor *boldDescriptor;
+	UIFontDescriptor *italicDescriptor;
     UIFont *boldFont;
     UIFont *normalFont;
+	UIFont *italicFont;
 }
 
 @property (nonatomic, strong) NSURL *fileURL;

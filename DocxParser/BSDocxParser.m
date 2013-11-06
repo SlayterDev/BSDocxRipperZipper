@@ -8,6 +8,8 @@
 
 #import "BSDocxParser.h"
 
+#define XML_TAG_TRUE @"w:val=\"1\"/>"
+
 @interface NSMutableAttributedString (RangeExtension)
 - (NSRange)fullRange;
 @end
@@ -32,7 +34,10 @@
 -(void) setupFontDescriptor {
     fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
     boldDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+	italicDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitItalic];
+	
     boldFont = [UIFont fontWithDescriptor:boldDescriptor size:0.0];
+	italicFont = [UIFont fontWithDescriptor:italicDescriptor size:0.0];
     normalFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
@@ -67,17 +72,36 @@
 				// Create attr string from text in run
                 NSMutableAttributedString *runString = [[NSMutableAttributedString alloc] initWithString:runTextElem.stringValue attributes:@{NSFontAttributeName: normalFont}];
                 
-				// Pull out bold attribute tag
+				// Get run preferences
                 GDataXMLElement *rPr = [[run elementsForName:@"w:rPr"] objectAtIndex:0];
+				
+				// Pull out bold attribute tag
                 GDataXMLElement *boldTrait = [[rPr elementsForName:@"w:b"] objectAtIndex:0];
-                if (boldTrait.XMLString) {
-                    if ([boldTrait.XMLString hasSuffix:@"w:val=\"1\"/>"]) {
-                        NSLog(@"SET BOLD YES");
-						// Give the string bold attributes
-                        [runString setAttributes:@{NSFontAttributeName: boldFont} range:[runString fullRange]];
-                        NSLog(@"Run: %@", runString.string);
-                    }
+                if (boldTrait.XMLString && [boldTrait.XMLString hasSuffix:XML_TAG_TRUE]) {
+					NSLog(@"SET BOLD YES");
+					// Give the string bold attributes
+					[runString addAttributes:@{NSFontAttributeName: boldFont} range:[runString fullRange]];
+					NSLog(@"Run: %@", runString.string);
                 }
+				
+				// Pull out italic tag
+				GDataXMLElement *italicTrait = [[rPr elementsForName:@"w:i"] firstObject];
+				if (italicTrait.XMLString && [italicTrait.XMLString hasSuffix:XML_TAG_TRUE]) {
+					NSLog(@"SET ITALIC YES");
+					// Give string italic attributes
+					[runString addAttributes:@{NSFontAttributeName: italicFont} range:[runString fullRange]];
+				}
+				
+				// Get color and set it
+				GDataXMLElement *colorTrait = [[rPr elementsForName:@"w:color"] firstObject];
+				if (colorTrait.XMLString) {
+					NSLog(@"Color attr: %@", colorTrait.attributes);
+					GDataXMLNode *colorVal = [colorTrait attributeForName:@"w:val"];
+					NSLog(@"Color val: %@", colorVal.stringValue);
+					
+					UIColor *fontColor = [UIColor colorWithHexString:colorVal.stringValue];
+					[runString addAttributes:@{NSForegroundColorAttributeName: fontColor} range:[runString fullRange]];
+				}
                 
                 [finalString appendAttributedString:runString];
                 NSLog(@"Final: %@", finalString.string);
