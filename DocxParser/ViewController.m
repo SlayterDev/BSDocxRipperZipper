@@ -27,7 +27,24 @@
 }
 
 -(NSURL *) getDocURL {
-    return [[NSBundle mainBundle] URLForResource:@"document7" withExtension:@"xml"];
+    NSString *docxPath = [[NSBundle mainBundle] pathForResource:@"OP" ofType:@"docx"];
+    NSString *zipPath = [[[BSFileHelper sharedHelper] getDocumentsDirectory] stringByAppendingPathComponent:@"OP.zip"];
+    NSString *unZipPath = [[[BSFileHelper sharedHelper] getDocumentsDirectory] stringByAppendingPathComponent:@"OP"];
+    NSError *error;
+    [[NSFileManager defaultManager] moveItemAtPath:docxPath toPath:zipPath error:&error];
+    if (error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+    } else {
+        NSLog(@"success");
+    }
+    
+    [SSZipArchive unzipFileAtPath:zipPath toDestination:unZipPath];
+    
+    NSURL *docURL = [[BSFileHelper sharedHelper] documentsDirectoryURL];
+    docURL = [docURL URLByAppendingPathComponent:@"OP/word/document.xml"];
+    
+    //return [[NSBundle mainBundle] URLForResource:@"document7" withExtension:@"xml"];
+    return docURL;
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BSDocxParser.h"
+#import "BSFileHelper.h"
+#import "SSZipArchive.h"
 
 @interface ViewController : UIViewController
 
