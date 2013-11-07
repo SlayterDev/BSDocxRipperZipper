@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		021D12AA182BDC690002CF57 /* BSDocxWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 021D12A9182BDC690002CF57 /* BSDocxWriter.m */; };
 		02293D86182ADFCB005F620A /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 02293D85182ADFCB005F620A /* UIColor+HexString.m */; };
 		02293D8C182B2285005F620A /* document2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02293D8B182B2285005F620A /* document2.xml */; };
 		02293D90182B2C1F005F620A /* document.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02293D8F182B2C1F005F620A /* document.xml */; };
 		02293D92182B2E01005F620A /* document3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02293D91182B2E01005F620A /* document3.xml */; };
 		02293D94182B3497005F620A /* document4.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02293D93182B3497005F620A /* document4.xml */; };
-		024BBA05182A0E8900002FCC /* BSDocxTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 024BBA04182A0E8900002FCC /* BSDocxTextStorage.m */; };
 		02D95698182B4C3400A54E79 /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D95697182B4C3400A54E79 /* Main-iPad.storyboard */; };
 		02D9569A182B4DB800A54E79 /* document5.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02D95699182B4DB800A54E79 /* document5.xml */; };
 		02D9569C182B556700A54E79 /* document6.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02D9569B182B556700A54E79 /* document6.xml */; };
@@ -54,14 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		021D12A8182BDC690002CF57 /* BSDocxWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDocxWriter.h; sourceTree = "<group>"; };
+		021D12A9182BDC690002CF57 /* BSDocxWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDocxWriter.m; sourceTree = "<group>"; };
 		02293D84182ADFCB005F620A /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		02293D85182ADFCB005F620A /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		02293D8B182B2285005F620A /* document2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document2.xml; sourceTree = "<group>"; };
 		02293D8F182B2C1F005F620A /* document.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document.xml; sourceTree = "<group>"; };
 		02293D91182B2E01005F620A /* document3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document3.xml; sourceTree = "<group>"; };
 		02293D93182B3497005F620A /* document4.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document4.xml; sourceTree = "<group>"; };
-		024BBA03182A0E8900002FCC /* BSDocxTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDocxTextStorage.h; sourceTree = "<group>"; };
-		024BBA04182A0E8900002FCC /* BSDocxTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDocxTextStorage.m; sourceTree = "<group>"; };
 		02D95697182B4C3400A54E79 /* Main-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main-iPad.storyboard"; sourceTree = "<group>"; };
 		02D95699182B4DB800A54E79 /* document5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document5.xml; sourceTree = "<group>"; };
 		02D9569B182B556700A54E79 /* document6.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document6.xml; sourceTree = "<group>"; };
@@ -252,18 +252,18 @@
 			isa = PBXGroup;
 			children = (
 				02D956A0182B5CB800A54E79 /* minizip */,
-				02D956B3182B5D2200A54E79 /* BSFileHelper.h */,
-				02D956B4182B5D2200A54E79 /* BSFileHelper.m */,
 				02D956AA182B5CB800A54E79 /* SSZipArchive.h */,
 				02D956AB182B5CB800A54E79 /* SSZipArchive.m */,
-				02F4462A182A02C60081585D /* GDataXMLNode.h */,
-				02F4462B182A02C60081585D /* GDataXMLNode.m */,
-				02F44626182A01B60081585D /* BSDocxParser.h */,
-				02F44627182A01B60081585D /* BSDocxParser.m */,
-				024BBA03182A0E8900002FCC /* BSDocxTextStorage.h */,
-				024BBA04182A0E8900002FCC /* BSDocxTextStorage.m */,
 				02293D84182ADFCB005F620A /* UIColor+HexString.h */,
 				02293D85182ADFCB005F620A /* UIColor+HexString.m */,
+				02F4462A182A02C60081585D /* GDataXMLNode.h */,
+				02F4462B182A02C60081585D /* GDataXMLNode.m */,
+				02D956B3182B5D2200A54E79 /* BSFileHelper.h */,
+				02D956B4182B5D2200A54E79 /* BSFileHelper.m */,
+				02F44626182A01B60081585D /* BSDocxParser.h */,
+				02F44627182A01B60081585D /* BSDocxParser.m */,
+				021D12A8182BDC690002CF57 /* BSDocxWriter.h */,
+				021D12A9182BDC690002CF57 /* BSDocxWriter.m */,
 			);
 			name = BSDocxParser;
 			sourceTree = "<group>";
@@ -378,6 +378,7 @@
 				02F44608182A01360081585D /* ViewController.m in Sources */,
 				02F44628182A01B60081585D /* BSDocxParser.m in Sources */,
 				02D956AD182B5CB800A54E79 /* mztools.c in Sources */,
+				021D12AA182BDC690002CF57 /* BSDocxWriter.m in Sources */,
 				02D956AC182B5CB800A54E79 /* ioapi.c in Sources */,
 				02F4462C182A02C60081585D /* GDataXMLNode.m in Sources */,
 				02F44602182A01360081585D /* AppDelegate.m in Sources */,
@@ -386,7 +387,6 @@
 				02293D86182ADFCB005F620A /* UIColor+HexString.m in Sources */,
 				02F445FE182A01360081585D /* main.m in Sources */,
 				02D956B5182B5D2200A54E79 /* BSFileHelper.m in Sources */,
-				024BBA05182A0E8900002FCC /* BSDocxTextStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

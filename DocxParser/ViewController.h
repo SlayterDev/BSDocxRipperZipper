@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BSDocxParser.h"
+#import "BSDocxWriter.h"
 #import "BSFileHelper.h"
 #import "SSZipArchive.h"
 

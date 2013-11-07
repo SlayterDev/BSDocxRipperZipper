@@ -26,7 +26,7 @@
 -(id) initWithFileURL:(NSURL *)fileURL {
     if ((self = [super init])) {
         self.fileURL = fileURL;
-        
+		
         [self setupFontDescriptor];
     }
     return self;

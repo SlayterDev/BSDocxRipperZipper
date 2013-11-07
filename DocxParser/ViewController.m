@@ -24,6 +24,8 @@
     
     self.textView.attributedText = [parser getFinalString];
     self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
+	
+	BSDocxWriter *writer = [[BSDocxWriter alloc] initWithAttributedString:self.textView.attributedText];
 }
 
 -(NSURL *) getDocURL {
