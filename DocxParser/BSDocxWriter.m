@@ -41,6 +41,7 @@
 -(void) splitString {
 	NSMutableArray *tempParagraphs = [[NSMutableArray alloc] init];
 	
+	// Split string into substrings by similar attributes
 	[self.string enumerateAttributesInRange:[self.string fullRange] options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
 		
 		NSString *subString = [[self.string string] substringWithRange:range];
@@ -52,15 +53,18 @@
 	
 	paragraphs = [[NSMutableArray alloc] init];
 	for (NSAttributedString *subString in tempParagraphs) {
-		NSArray *subSubStrings = [[subString string] componentsSeparatedByString:@"\n"];
+		// split those strings into smaller strings by newline char
+		NSArray *subSubStrings = [self splitStringByNewLine:subString.string];
+		//NSLog(@"SUB: %@", subSubStrings);
 		
 		for (NSString *s in subSubStrings) {
+			// re-build substrings into attributed strings
 			NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:s attributes:[subString attributesAtIndex:0 effectiveRange:NULL]];
 			[paragraphs addObject:attrString];
-			if (subSubStrings.count > 1) {
+			/*if ([s isEqual:[subSubStrings lastObject]]) {
 				NSAttributedString *newLineParagraph = [[NSAttributedString alloc] initWithString:@"\n" attributes:[subString attributesAtIndex:0 effectiveRange:NULL]];
 				[paragraphs addObject:newLineParagraph];
-			}
+			}*/
 		}
 	}
 	
@@ -70,7 +74,11 @@
 	for (NSAttributedString *subString in tempParagraphs) {
 		[tempArray addObject:subString];
 		
-		if ([subString.string isEqualToString:@"\n"]) {
+		if ([subString.string hasSuffix:@"\n"]) {
+			NSAttributedString *newSubString = [[NSAttributedString alloc] initWithString:[subString.string stringByReplacingOccurrencesOfString:@"\n" withString:@""] attributes:[subString attributesAtIndex:0 effectiveRange:nil]];
+			[tempArray removeObject:subString];
+			[tempArray addObject:newSubString];
+			
 			NSArray *a = [[NSArray alloc] initWithArray:tempArray];
 			[paragraphs addObject:a];
 			[tempArray removeAllObjects];
@@ -80,10 +88,28 @@
 	NSLog(@"Printing: %d", (int)paragraphs.count);
 	for (NSMutableArray *a in paragraphs) {
 		for (NSAttributedString *s in a)
-			NSLog(@"%@", s.string);
+			NSLog(@"%@", [s.string stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 	}
 	
 	[self buildRootElement];
+}
+
+-(NSArray *) splitStringByNewLine:(NSString *)string {
+	NSMutableArray *lines = [NSMutableArray array];
+	NSRange searchRange = NSMakeRange(0, string.length);
+	while (1) {
+		NSRange newLineRange = [string rangeOfString:@"\n" options:NSLiteralSearch range:searchRange];
+		if (newLineRange.location != NSNotFound) {
+			NSInteger index = newLineRange.location + newLineRange.length;
+			NSString *line = [string substringWithRange:NSMakeRange(searchRange.location, index - searchRange.location)];
+			[lines addObject:line];
+			searchRange = NSMakeRange(index, string.length - index);
+		} else {
+			break;
+		}
+	}
+	
+	return lines;
 }
 
 -(GDataXMLElement *) buildRootElement {
@@ -180,6 +206,11 @@
 			}
 			
 			GDataXMLElement *textElement = [GDataXMLElement elementWithName:@"w:t" stringValue:runString.string];
+			GDataXMLNode *spaceNode = [GDataXMLNode elementWithName:@"xml:space" stringValue:@"preserve"];
+			[textElement addAttribute:spaceNode];
+			if ([runString.string isEqualToString:@""]) {
+				continue;
+			}
 			
 			[runElement addChild:runPr];
 			[runElement addChild:textElement];

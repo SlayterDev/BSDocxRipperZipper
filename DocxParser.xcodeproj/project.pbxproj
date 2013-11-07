@@ -14,6 +14,8 @@
 		02293D92182B2E01005F620A /* document3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02293D91182B2E01005F620A /* document3.xml */; };
 		02293D94182B3497005F620A /* document4.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02293D93182B3497005F620A /* document4.xml */; };
 		02573273182C364100B97B3C /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 02573271182C364100B97B3C /* SSZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		02573275182C391200B97B3C /* Fable.docx in Resources */ = {isa = PBXBuildFile; fileRef = 02573274182C385A00B97B3C /* Fable.docx */; };
+		02573277182C44FE00B97B3C /* april_13.docx in Resources */ = {isa = PBXBuildFile; fileRef = 02573276182C44FE00B97B3C /* april_13.docx */; };
 		02D95698182B4C3400A54E79 /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D95697182B4C3400A54E79 /* Main-iPad.storyboard */; };
 		02D9569A182B4DB800A54E79 /* document5.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02D95699182B4DB800A54E79 /* document5.xml */; };
 		02D9569C182B556700A54E79 /* document6.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02D9569B182B556700A54E79 /* document6.xml */; };
@@ -64,6 +66,8 @@
 		02293D93182B3497005F620A /* document4.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document4.xml; sourceTree = "<group>"; };
 		02573271182C364100B97B3C /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		02573272182C364100B97B3C /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		02573274182C385A00B97B3C /* Fable.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fable.docx; sourceTree = "<group>"; };
+		02573276182C44FE00B97B3C /* april_13.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = april_13.docx; sourceTree = "<group>"; };
 		02D95697182B4C3400A54E79 /* Main-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main-iPad.storyboard"; sourceTree = "<group>"; };
 		02D95699182B4DB800A54E79 /* document5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document5.xml; sourceTree = "<group>"; };
 		02D9569B182B556700A54E79 /* document6.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document6.xml; sourceTree = "<group>"; };
@@ -142,7 +146,9 @@
 		02D9569F182B56A300A54E79 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
+				02573276182C44FE00B97B3C /* april_13.docx */,
 				02D956B6182B5D4C00A54E79 /* OP.docx */,
+				02573274182C385A00B97B3C /* Fable.docx */,
 				02293D8F182B2C1F005F620A /* document.xml */,
 				02293D8B182B2285005F620A /* document2.xml */,
 				02293D91182B2E01005F620A /* document3.xml */,
@@ -344,9 +350,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02573277182C44FE00B97B3C /* april_13.docx in Resources */,
 				02293D90182B2C1F005F620A /* document.xml in Resources */,
 				02293D8C182B2285005F620A /* document2.xml in Resources */,
 				02293D94182B3497005F620A /* document4.xml in Resources */,
+				02573275182C391200B97B3C /* Fable.docx in Resources */,
 				02D95698182B4C3400A54E79 /* Main-iPad.storyboard in Resources */,
 				02293D92182B2E01005F620A /* document3.xml in Resources */,
 				02D9569A182B4DB800A54E79 /* document5.xml in Resources */,
