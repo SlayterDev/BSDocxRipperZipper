@@ -81,12 +81,29 @@
 
 -(void) writeXML:(NSData *)data {
 	NSURL *filePath = [[BSFileHelper sharedHelper] documentsDirectoryURL];
-	filePath = [filePath URLByAppendingPathComponent:@"here.xml"];
+	filePath = [filePath URLByAppendingPathComponent:@"OP/word/document.xml"];
 	[data writeToURL:filePath atomically:YES];
 	
-	[self fixOtherFile];
+	//[self fixOtherFile];
 	
-	NSLog(@"done %@", filePath);
+	NSString *dirPath = [[[BSFileHelper sharedHelper] getDocumentsDirectory] stringByAppendingPathComponent:@"OP"];
+	NSArray *paths = [[NSFileManager defaultManager] subpathsAtPath:dirPath];
+	NSMutableArray *fullPaths = [[NSMutableArray alloc] init];
+	for (int i = 0; i < paths.count; i++) {
+		if ([[[paths objectAtIndex:i] lastPathComponent] hasPrefix:@".DS"])
+			continue;
+		
+		[fullPaths addObject:[dirPath stringByAppendingPathComponent:[paths objectAtIndex:i]]];
+	}
+	
+	NSLog(@"%@", fullPaths);
+	
+	NSString *destPath = [[[BSFileHelper sharedHelper] getDocumentsDirectory] stringByAppendingPathComponent:@"newOP.zip"];
+	NSString *docPath = [[[BSFileHelper sharedHelper] getDocumentsDirectory] stringByAppendingPathComponent:@"newOP.docx"];
+	[SSZipArchive createZipFileAtPath:destPath withFilesAtPaths:fullPaths];
+	[[NSFileManager defaultManager] moveItemAtPath:destPath toPath:docPath error:nil];
+	
+	NSLog(@"done %@", docPath);
 }
 
 - (void)didReceiveMemoryWarning
