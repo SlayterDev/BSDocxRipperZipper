@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GDataXMLNode.h"
+#include "UIColor+HexString.h"
 
 @interface BSDocxWriter : NSObject {
 	NSMutableArray *paragraphs;
