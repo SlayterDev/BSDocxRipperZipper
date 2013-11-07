@@ -56,9 +56,21 @@
     [self loadString];
 }
 
+-(void) resetHelperVars {
+	boldFont = [UIFont fontWithDescriptor:boldDescriptor size:0.0];
+	italicFont = [UIFont fontWithDescriptor:italicDescriptor size:0.0];
+    normalFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+	
+	currentFont = nil;
+	currentFontName = nil;
+	fontSize = 14.0f;
+	runIsBold = NO;
+	runIsItalic = NO;
+}
+
 -(void) loadString {
 	// get body element
-    GDataXMLElement *body = [[self.xmlDoc.rootElement elementsForName:@"w:body"] objectAtIndex:0];
+    GDataXMLElement *body = [[self.xmlDoc.rootElement elementsForName:@"w:body"] firstObject];
     
 	NSArray *paragraphs = [body elementsForName:@"w:p"]; // find all parapgraphs
     for (GDataXMLElement *paragraph in paragraphs) {
@@ -68,26 +80,26 @@
         for (GDataXMLElement *run in runs) {
             NSLog(@"Found a run!");
 			// get the text if it exists
-            GDataXMLElement *runTextElem = [[run elementsForName:@"w:t"] objectAtIndex:0];
+            GDataXMLElement *runTextElem = [[run elementsForName:@"w:t"] firstObject];
             if (runTextElem) {
 				// Create attr string from text in run
                 runString = [[NSMutableAttributedString alloc] initWithString:runTextElem.stringValue attributes:@{NSFontAttributeName: normalFont}];
                 
 				// Get run preferences
-                GDataXMLElement *rPr = [[run elementsForName:@"w:rPr"] objectAtIndex:0];
+                GDataXMLElement *rPr = [[run elementsForName:@"w:rPr"] firstObject];
 				
-				currentFont = nil;
-				currentFontName = nil;
-				fontSize = 14.0f;
-				runIsBold = NO;
-				runIsItalic = NO;
+				[self resetHelperVars];
 				
 				// Get font name
 				GDataXMLElement *fontTrait = [[rPr elementsForName:@"w:rFonts"] firstObject];
 				[self checkFontNameWithElement:fontTrait];
 				
+				// Get font size
+				GDataXMLElement *sizeTrait = [[rPr elementsForName:@"w:sz"] firstObject];
+				[self setFontSizeWithElement:sizeTrait];
+				
 				// Pull out bold attribute tag
-                GDataXMLElement *boldTrait = [[rPr elementsForName:@"w:b"] objectAtIndex:0];
+                GDataXMLElement *boldTrait = [[rPr elementsForName:@"w:b"] firstObject];
                 [self checkBoldWithElement:boldTrait];
 				
 				// Pull out italic tag
@@ -123,6 +135,22 @@
 		currentFont = [UIFont fontWithName:fontNode.stringValue size:fontSize];
 		currentFontName = fontNode.stringValue;
 		NSLog(@"Custom Font: %@", fontNode.stringValue);
+	}
+}
+
+-(void) setFontSizeWithElement:(GDataXMLElement *)element {
+	if (element.XMLString) {
+		GDataXMLNode *sizeNode = [element attributeForName:@"w:val"];
+		float size = (float)sizeNode.stringValue.intValue;
+		size /= 2.0f;
+		if (currentFont) {
+			fontSize = size;
+			currentFont = [UIFont fontWithName:currentFontName size:fontSize];
+		} else {
+			normalFont = [normalFont fontWithSize:size];
+			boldFont = [boldFont fontWithSize:size];
+			italicFont = [italicFont fontWithSize:size];
+		}
 	}
 }
 
