@@ -87,6 +87,7 @@
             NSLog(@"Found a run!");
 			// get the text if it exists
             GDataXMLElement *runTextElem = [[run elementsForName:@"w:t"] firstObject];
+			
             if (runTextElem) {
 				// Create attr string from text in run
                 runString = [[NSMutableAttributedString alloc] initWithString:runTextElem.stringValue attributes:@{NSFontAttributeName: normalFont}];
