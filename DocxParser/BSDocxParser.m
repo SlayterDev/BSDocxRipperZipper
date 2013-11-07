@@ -77,8 +77,10 @@
                 GDataXMLElement *rPr = [[run elementsForName:@"w:rPr"] objectAtIndex:0];
 				
 				currentFont = nil;
+				currentFontName = nil;
+				fontSize = 14.0f;
 				runIsBold = NO;
-				runisItalic = NO;
+				runIsItalic = NO;
 				
 				// Get font name
 				GDataXMLElement *fontTrait = [[rPr elementsForName:@"w:rFonts"] firstObject];
@@ -105,7 +107,7 @@
 				}
                 
                 [finalString appendAttributedString:runString];
-                NSLog(@"Final: %@", finalString.string);
+                NSLog(@"Run: %@", runString.string);
             }
         }
         
@@ -118,30 +120,45 @@
 -(void) checkFontNameWithElement:(GDataXMLElement *)element {
 	if (element.XMLString) {
 		GDataXMLNode *fontNode = [element attributeForName:@"w:ascii"];
-		currentFont = [UIFont fontWithName:fontNode.stringValue size:14.0f];
+		currentFont = [UIFont fontWithName:fontNode.stringValue size:fontSize];
+		currentFontName = fontNode.stringValue;
+		NSLog(@"Custom Font: %@", fontNode.stringValue);
 	}
 }
 
 -(void) checkBoldWithElement:(GDataXMLElement *)element {
-	if (element.XMLString && [element.XMLString hasSuffix:XML_TAG_TRUE] && !currentFont) {
+	if (element.XMLString && [element.XMLString hasSuffix:XML_TAG_TRUE]) {
 		NSLog(@"SET BOLD YES");
+		runIsBold = YES;
 		// Give the string bold attributes
-		[runString addAttributes:@{NSFontAttributeName: boldFont} range:[runString fullRange]];
+		if (!currentFont) {
+			[runString addAttributes:@{NSFontAttributeName: boldFont} range:[runString fullRange]];
+		} else {
+			// custom font
+			NSLog(@"%@", [self getNewFontNameForFont:currentFont.fontName bold:runIsBold italic:runIsItalic]);
+			currentFont = [UIFont fontWithName:[self getNewFontNameForFont:currentFontName bold:runIsBold italic:runIsItalic] size:fontSize];
+		}
 		NSLog(@"Run: %@", runString.string);
 		
 	}
 }
 
 -(void) checkItalicWithElement:(GDataXMLElement *)element {
-	if (element.XMLString && [element.XMLString hasSuffix:XML_TAG_TRUE] && !currentFont) {
+	if (element.XMLString && [element.XMLString hasSuffix:XML_TAG_TRUE]) {
 		NSLog(@"SET ITALIC YES");
+		runIsItalic = YES;
 		// Give string italic attributes
-		[runString addAttributes:@{NSFontAttributeName: italicFont} range:[runString fullRange]];
+		if (!currentFont) {
+			[runString addAttributes:@{NSFontAttributeName: italicFont} range:[runString fullRange]];
+		} else {
+			// custom font
+			currentFont = [UIFont fontWithName:[self getNewFontNameForFont:currentFontName bold:runIsBold italic:runIsItalic] size:fontSize];
+		}
 	}
 }
 
 -(void) checkUnderlineWithElement:(GDataXMLElement *)element {
-	if (element.XMLString && [element.XMLString hasSuffix:XML_UNDERLINE_TRUE_SINGLE] && !currentFont) {
+	if (element.XMLString && [element.XMLString hasSuffix:XML_UNDERLINE_TRUE_SINGLE]) {
 		NSLog(@"SET UNDERLINE YES");
 		// Give string italic attributes
 		[runString addAttributes:@{NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]} range:[runString fullRange]];
@@ -150,7 +167,6 @@
 
 -(void) checkColorWithElement:(GDataXMLElement *)element {
 	if (element.XMLString) {
-		NSLog(@"Color attr: %@", element.attributes);
 		GDataXMLNode *colorVal = [element attributeForName:@"w:val"];
 		NSLog(@"Color val: %@", colorVal.stringValue);
 		
@@ -161,13 +177,17 @@
 
 -(NSString *) getNewFontNameForFont:(NSString *)fontName bold:(BOOL)bold italic:(BOOL)italic {
 	NSArray *fonts = [UIFont fontNamesForFamilyName:fontName];
+	NSLog(@"New font for bold or italic\n%@", fontName);
 	
 	for (NSString *font in fonts) {
-		if ([font rangeOfString:@"bold"].location != NSNotFound && bold) {
+		if ([font rangeOfString:@"bold" options:NSCaseInsensitiveSearch].location != NSNotFound && bold && [font rangeOfString:@"italic" options:NSCaseInsensitiveSearch].location == NSNotFound) {
+			NSLog(@"Custom font bold");
 			return font;
-		} else if ([font rangeOfString:@"italic"].location != NSNotFound && italic) {
+		} else if ([font rangeOfString:@"italic" options:NSCaseInsensitiveSearch].location != NSNotFound && italic && [font rangeOfString:@"bold" options:NSCaseInsensitiveSearch].location == NSNotFound) {
+			NSLog(@"Custom font italic");
 			return font;
-		} else if ([font rangeOfString:@"italic"].location != NSNotFound && [font rangeOfString:@"bold"].location != NSNotFound && bold && italic) {
+		} else if ([font rangeOfString:@"italic" options:NSCaseInsensitiveSearch].location != NSNotFound && [font rangeOfString:@"bold" options:NSCaseInsensitiveSearch].location != NSNotFound && bold && italic) {
+			NSLog(@"Custom font bold and italic");
 			return font;
 		}
 	}

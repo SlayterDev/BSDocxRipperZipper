@@ -21,7 +21,9 @@
     UIFont *boldFont;
     UIFont *normalFont;
 	UIFont *italicFont;
+	
 	UIFont *currentFont;
+	NSString *currentFontName;
 	
 	float fontSize;
 	BOOL runIsBold;
