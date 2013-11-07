@@ -68,6 +68,16 @@
 	runIsItalic = NO;
 }
 
+-(NSArray *) getRunsAndLinks:(GDataXMLElement *)element {
+    NSMutableArray *elementsToReturn = [[NSMutableArray alloc] init];
+    for (GDataXMLElement *tag in element.children) {
+        if ([tag.XMLString hasPrefix:@"<w:r"] || [tag.XMLString hasPrefix:@"<w:hyperlink"])
+            [elementsToReturn addObject:tag];
+    }
+    
+    return elementsToReturn;
+}
+
 -(void) loadString {
 	// get body element
     GDataXMLElement *body = [[self.xmlDoc.rootElement elementsForName:@"w:body"] firstObject];
@@ -82,12 +92,19 @@
 		GDataXMLElement *justificationElem = [[pPr elementsForName:@"w:jc"] firstObject];
 		[self checkAlignmentWithElement:justificationElem];
         
-        NSArray *runs = [paragraph elementsForName:@"w:r"]; // find all runs in each paragraph
-        for (GDataXMLElement *run in runs) {
+        NSArray *runs = [self getRunsAndLinks:paragraph]; // find all runs in each paragraph
+        for (int i = 0; i < runs.count; i++) {
+            GDataXMLElement *run = [runs objectAtIndex:i];
+            
             NSLog(@"Found a run!");
-			// get the text if it exists
-            GDataXMLElement *runTextElem = [[run elementsForName:@"w:t"] firstObject];
-			
+			GDataXMLElement *runTextElem;
+            if ([run.XMLString hasPrefix:@"<w:hyperlink"]) {
+                run = [[run elementsForName:@"w:r"] firstObject];
+            }
+            
+            // get the text if it exists
+            runTextElem = [[run elementsForName:@"w:t"] firstObject];
+            
             if (runTextElem) {
 				// Create attr string from text in run
                 runString = [[NSMutableAttributedString alloc] initWithString:runTextElem.stringValue attributes:@{NSFontAttributeName: normalFont}];
