@@ -13,6 +13,8 @@
 		02293D92182B2E01005F620A /* document3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02293D91182B2E01005F620A /* document3.xml */; };
 		02293D94182B3497005F620A /* document4.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02293D93182B3497005F620A /* document4.xml */; };
 		024BBA05182A0E8900002FCC /* BSDocxTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 024BBA04182A0E8900002FCC /* BSDocxTextStorage.m */; };
+		02D95698182B4C3400A54E79 /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D95697182B4C3400A54E79 /* Main-iPad.storyboard */; };
+		02D9569A182B4DB800A54E79 /* document5.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02D95699182B4DB800A54E79 /* document5.xml */; };
 		02F445F2182A01360081585D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F1182A01360081585D /* Foundation.framework */; };
 		02F445F4182A01360081585D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F3182A01360081585D /* CoreGraphics.framework */; };
 		02F445F6182A01360081585D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F5182A01360081585D /* UIKit.framework */; };
@@ -50,6 +52,8 @@
 		02293D93182B3497005F620A /* document4.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document4.xml; sourceTree = "<group>"; };
 		024BBA03182A0E8900002FCC /* BSDocxTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDocxTextStorage.h; sourceTree = "<group>"; };
 		024BBA04182A0E8900002FCC /* BSDocxTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDocxTextStorage.m; sourceTree = "<group>"; };
+		02D95697182B4C3400A54E79 /* Main-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main-iPad.storyboard"; sourceTree = "<group>"; };
+		02D95699182B4DB800A54E79 /* document5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document5.xml; sourceTree = "<group>"; };
 		02F445EE182A01360081585D /* DocxParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocxParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F445F1182A01360081585D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02F445F3182A01360081585D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -99,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02D95696182B4BCC00A54E79 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				02D95697182B4C3400A54E79 /* Main-iPad.storyboard */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		02F445E5182A01360081585D = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +118,7 @@
 				02F44616182A01370081585D /* DocxParserTests */,
 				02F445F0182A01360081585D /* Frameworks */,
 				02F445EF182A01360081585D /* Products */,
+				02F445F8182A01360081585D /* Supporting Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,10 +145,12 @@
 		02F445F7182A01360081585D /* DocxParser */ = {
 			isa = PBXGroup;
 			children = (
+				02D95696182B4BCC00A54E79 /* iPad */,
 				02293D8F182B2C1F005F620A /* document.xml */,
 				02293D8B182B2285005F620A /* document2.xml */,
 				02293D91182B2E01005F620A /* document3.xml */,
 				02293D93182B3497005F620A /* document4.xml */,
+				02D95699182B4DB800A54E79 /* document5.xml */,
 				02F44600182A01360081585D /* AppDelegate.h */,
 				02F44601182A01360081585D /* AppDelegate.m */,
 				02F44603182A01360081585D /* Main.storyboard */,
@@ -143,7 +158,6 @@
 				02F44607182A01360081585D /* ViewController.m */,
 				02F44629182A01BB0081585D /* BSDocxParser */,
 				02F44609182A01360081585D /* Images.xcassets */,
-				02F445F8182A01360081585D /* Supporting Files */,
 			);
 			path = DocxParser;
 			sourceTree = "<group>";
@@ -157,6 +171,7 @@
 				02F445FF182A01360081585D /* DocxParser-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = DocxParser;
 			sourceTree = "<group>";
 		};
 		02F44616182A01370081585D /* DocxParserTests */ = {
@@ -271,7 +286,9 @@
 				02293D90182B2C1F005F620A /* document.xml in Resources */,
 				02293D8C182B2285005F620A /* document2.xml in Resources */,
 				02293D94182B3497005F620A /* document4.xml in Resources */,
+				02D95698182B4C3400A54E79 /* Main-iPad.storyboard in Resources */,
 				02293D92182B2E01005F620A /* document3.xml in Resources */,
+				02D9569A182B4DB800A54E79 /* document5.xml in Resources */,
 				02F4460A182A01360081585D /* Images.xcassets in Resources */,
 				02F445FC182A01360081585D /* InfoPlist.strings in Resources */,
 				02F44605182A01360081585D /* Main.storyboard in Resources */,
@@ -434,8 +451,10 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "DocxParser/DocxParser-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -453,8 +472,10 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "DocxParser/DocxParser-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

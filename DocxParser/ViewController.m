@@ -23,10 +23,11 @@
     [parser loadDocument];
     
     self.textView.attributedText = [parser getFinalString];
+    self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
 }
 
 -(NSURL *) getDocURL {
-    return [[NSBundle mainBundle] URLForResource:@"document3" withExtension:@"xml"];
+    return [[NSBundle mainBundle] URLForResource:@"document5" withExtension:@"xml"];
 }
 
 - (void)didReceiveMemoryWarning

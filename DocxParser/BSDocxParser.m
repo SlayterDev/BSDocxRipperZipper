@@ -164,6 +164,10 @@
 -(void) checkFontNameWithElement:(GDataXMLElement *)element {
 	if (element.XMLString) {
 		GDataXMLNode *fontNode = [element attributeForName:@"w:ascii"];
+        
+        if (!fontNode.stringValue)
+            fontNode = [element attributeForName:@"w:cs"];
+        
 		currentFont = [UIFont fontWithName:fontNode.stringValue size:fontSize];
 		currentFontName = fontNode.stringValue;
 		NSLog(@"Custom Font: %@", fontNode.stringValue);
@@ -175,6 +179,7 @@
 		GDataXMLNode *sizeNode = [element attributeForName:@"w:val"];
 		float size = (float)sizeNode.stringValue.intValue;
 		size /= 2.0f;
+        NSLog(@"Size: %f", size);
 		if (currentFont) {
 			fontSize = size;
 			currentFont = [UIFont fontWithName:currentFontName size:fontSize];
@@ -187,7 +192,7 @@
 }
 
 -(void) checkBoldWithElement:(GDataXMLElement *)element {
-	if (element.XMLString && [element.XMLString hasSuffix:XML_TAG_TRUE]) {
+	if (element.XMLString /*&& [element.XMLString hasSuffix:XML_TAG_TRUE]*/) {
 		NSLog(@"SET BOLD YES");
 		runIsBold = YES;
 		// Give the string bold attributes
@@ -204,7 +209,7 @@
 }
 
 -(void) checkItalicWithElement:(GDataXMLElement *)element {
-	if (element.XMLString && [element.XMLString hasSuffix:XML_TAG_TRUE]) {
+	if (element.XMLString /*&& [element.XMLString hasSuffix:XML_TAG_TRUE]*/) {
 		NSLog(@"SET ITALIC YES");
 		runIsItalic = YES;
 		// Give string italic attributes
