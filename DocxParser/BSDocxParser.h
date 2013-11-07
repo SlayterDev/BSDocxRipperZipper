@@ -28,6 +28,8 @@
 	float fontSize;
 	BOOL runIsBold;
 	BOOL runIsItalic;
+	
+	NSDictionary *alignmentAttr;
 }
 
 @property (nonatomic, strong) NSURL *fileURL;

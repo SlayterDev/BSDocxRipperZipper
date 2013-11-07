@@ -75,6 +75,12 @@
 	NSArray *paragraphs = [body elementsForName:@"w:p"]; // find all parapgraphs
     for (GDataXMLElement *paragraph in paragraphs) {
         NSLog(@"Found a paragraph!");
+		
+		// check alignment
+		alignmentAttr = nil;
+		GDataXMLElement *pPr = [[paragraph elementsForName:@"w:pPr"] firstObject];
+		GDataXMLElement *justificationElem = [[pPr elementsForName:@"w:jc"] firstObject];
+		[self checkAlignmentWithElement:justificationElem];
         
         NSArray *runs = [paragraph elementsForName:@"w:r"]; // find all runs in each paragraph
         for (GDataXMLElement *run in runs) {
@@ -114,8 +120,14 @@
 				GDataXMLElement *colorTrait = [[rPr elementsForName:@"w:color"] firstObject];
 				[self checkColorWithElement:colorTrait];
 				
+				// apply custom font
 				if (currentFont) {
 					[runString addAttributes:@{NSFontAttributeName: currentFont} range:[runString fullRange]];
+				}
+				
+				// apply alignment if needed
+				if (alignmentAttr) {
+					[runString addAttributes:alignmentAttr range:[runString fullRange]];
 				}
                 
                 [finalString appendAttributedString:runString];
@@ -190,6 +202,25 @@
 		NSLog(@"SET UNDERLINE YES");
 		// Give string italic attributes
 		[runString addAttributes:@{NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]} range:[runString fullRange]];
+	}
+}
+
+-(void) checkAlignmentWithElement:(GDataXMLElement *)element {
+	if (element.XMLString) {
+		GDataXMLNode *alignNode = [element attributeForName:@"w:val"];
+		NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+		
+		if ([alignNode.stringValue isEqualToString:@"center"]) {
+			paragraphStyle.alignment = NSTextAlignmentCenter;
+		} else if ([alignNode.stringValue isEqualToString:@"right"]) {
+			paragraphStyle.alignment = NSTextAlignmentRight;
+		} else if ([alignNode.stringValue isEqualToString:@"left"]) {
+			paragraphStyle.alignment = NSTextAlignmentLeft;
+		} else if ([alignNode.stringValue isEqualToString:@"justified"]) {
+			paragraphStyle.alignment = NSTextAlignmentJustified;
+		}
+		
+		alignmentAttr = @{NSParagraphStyleAttributeName: paragraphStyle};
 	}
 }
 
