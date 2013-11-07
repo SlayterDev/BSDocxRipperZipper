@@ -28,6 +28,7 @@
 	float fontSize;
 	BOOL runIsBold;
 	BOOL runIsItalic;
+    BOOL runIsHyperlink;
 	
 	NSDictionary *alignmentAttr;
 }

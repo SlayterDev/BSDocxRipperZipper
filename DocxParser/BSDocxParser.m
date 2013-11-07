@@ -98,8 +98,10 @@
             
             NSLog(@"Found a run!");
 			GDataXMLElement *runTextElem;
+            runIsHyperlink = NO;
             if ([run.XMLString hasPrefix:@"<w:hyperlink"]) {
                 run = [[run elementsForName:@"w:r"] firstObject];
+                runIsHyperlink = YES;
             }
             
             // get the text if it exists
@@ -216,7 +218,7 @@
 }
 
 -(void) checkUnderlineWithElement:(GDataXMLElement *)element {
-	if (element.XMLString && [element.XMLString hasSuffix:XML_UNDERLINE_TRUE_SINGLE]) {
+	if ((element.XMLString && [element.XMLString hasSuffix:XML_UNDERLINE_TRUE_SINGLE]) || runIsHyperlink) {
 		NSLog(@"SET UNDERLINE YES");
 		// Give string italic attributes
 		[runString addAttributes:@{NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]} range:[runString fullRange]];
@@ -249,7 +251,10 @@
 		
 		UIColor *fontColor = [UIColor colorWithHexString:colorVal.stringValue];
 		[runString addAttributes:@{NSForegroundColorAttributeName: fontColor} range:[runString fullRange]];
-	}
+	} else if (runIsHyperlink) {
+        UIColor *hyperLinkColor = [UIColor colorWithHexString:@"1155cc"];
+        [runString addAttributes:@{NSForegroundColorAttributeName: hyperLinkColor} range:[runString fullRange]];
+    }
 }
 
 -(NSString *) getNewFontNameForFont:(NSString *)fontName bold:(BOOL)bold italic:(BOOL)italic {
