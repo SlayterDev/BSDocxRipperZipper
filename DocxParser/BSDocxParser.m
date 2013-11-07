@@ -123,6 +123,7 @@
 				// Get font size
 				GDataXMLElement *sizeTrait = [[rPr elementsForName:@"w:sz"] firstObject];
 				[self setFontSizeWithElement:sizeTrait];
+                [runString setAttributes:@{NSFontAttributeName: normalFont} range:[runString fullRange]];
 				
 				// Pull out bold attribute tag
                 GDataXMLElement *boldTrait = [[rPr elementsForName:@"w:b"] firstObject];
@@ -179,9 +180,9 @@
 		GDataXMLNode *sizeNode = [element attributeForName:@"w:val"];
 		float size = (float)sizeNode.stringValue.intValue;
 		size /= 2.0f;
+        fontSize = size;
         NSLog(@"Size: %f", size);
 		if (currentFont) {
-			fontSize = size;
 			currentFont = [UIFont fontWithName:currentFontName size:fontSize];
 		} else {
 			normalFont = [normalFont fontWithSize:size];

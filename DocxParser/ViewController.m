@@ -27,7 +27,7 @@
 }
 
 -(NSURL *) getDocURL {
-    return [[NSBundle mainBundle] URLForResource:@"document5" withExtension:@"xml"];
+    return [[NSBundle mainBundle] URLForResource:@"document7" withExtension:@"xml"];
 }
 
 - (void)didReceiveMemoryWarning

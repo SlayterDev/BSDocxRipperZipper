@@ -15,6 +15,8 @@
 		024BBA05182A0E8900002FCC /* BSDocxTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 024BBA04182A0E8900002FCC /* BSDocxTextStorage.m */; };
 		02D95698182B4C3400A54E79 /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D95697182B4C3400A54E79 /* Main-iPad.storyboard */; };
 		02D9569A182B4DB800A54E79 /* document5.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02D95699182B4DB800A54E79 /* document5.xml */; };
+		02D9569C182B556700A54E79 /* document6.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02D9569B182B556700A54E79 /* document6.xml */; };
+		02D9569E182B569E00A54E79 /* document7.xml in Resources */ = {isa = PBXBuildFile; fileRef = 02D9569D182B569E00A54E79 /* document7.xml */; };
 		02F445F2182A01360081585D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F1182A01360081585D /* Foundation.framework */; };
 		02F445F4182A01360081585D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F3182A01360081585D /* CoreGraphics.framework */; };
 		02F445F6182A01360081585D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F5182A01360081585D /* UIKit.framework */; };
@@ -54,6 +56,8 @@
 		024BBA04182A0E8900002FCC /* BSDocxTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDocxTextStorage.m; sourceTree = "<group>"; };
 		02D95697182B4C3400A54E79 /* Main-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main-iPad.storyboard"; sourceTree = "<group>"; };
 		02D95699182B4DB800A54E79 /* document5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document5.xml; sourceTree = "<group>"; };
+		02D9569B182B556700A54E79 /* document6.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document6.xml; sourceTree = "<group>"; };
+		02D9569D182B569E00A54E79 /* document7.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = document7.xml; sourceTree = "<group>"; };
 		02F445EE182A01360081585D /* DocxParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocxParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F445F1182A01360081585D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02F445F3182A01360081585D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -111,6 +115,20 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
+		02D9569F182B56A300A54E79 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				02293D8F182B2C1F005F620A /* document.xml */,
+				02293D8B182B2285005F620A /* document2.xml */,
+				02293D91182B2E01005F620A /* document3.xml */,
+				02293D93182B3497005F620A /* document4.xml */,
+				02D95699182B4DB800A54E79 /* document5.xml */,
+				02D9569B182B556700A54E79 /* document6.xml */,
+				02D9569D182B569E00A54E79 /* document7.xml */,
+			);
+			name = Documents;
+			sourceTree = "<group>";
+		};
 		02F445E5182A01360081585D = {
 			isa = PBXGroup;
 			children = (
@@ -146,11 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				02D95696182B4BCC00A54E79 /* iPad */,
-				02293D8F182B2C1F005F620A /* document.xml */,
-				02293D8B182B2285005F620A /* document2.xml */,
-				02293D91182B2E01005F620A /* document3.xml */,
-				02293D93182B3497005F620A /* document4.xml */,
-				02D95699182B4DB800A54E79 /* document5.xml */,
+				02D9569F182B56A300A54E79 /* Documents */,
 				02F44600182A01360081585D /* AppDelegate.h */,
 				02F44601182A01360081585D /* AppDelegate.m */,
 				02F44603182A01360081585D /* Main.storyboard */,
@@ -290,8 +304,10 @@
 				02293D92182B2E01005F620A /* document3.xml in Resources */,
 				02D9569A182B4DB800A54E79 /* document5.xml in Resources */,
 				02F4460A182A01360081585D /* Images.xcassets in Resources */,
+				02D9569C182B556700A54E79 /* document6.xml in Resources */,
 				02F445FC182A01360081585D /* InfoPlist.strings in Resources */,
 				02F44605182A01360081585D /* Main.storyboard in Resources */,
+				02D9569E182B569E00A54E79 /* document7.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
