@@ -15,7 +15,9 @@
 }
 
 @property (nonatomic, strong) NSAttributedString *string;
+@property (nonatomic, strong) GDataXMLDocument *xmlDocument;
 
 -(id) initWithAttributedString:(NSAttributedString *)string;
+-(NSData *) buildDocument;
 
 @end

@@ -26,6 +26,8 @@
     self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
 	
 	BSDocxWriter *writer = [[BSDocxWriter alloc] initWithAttributedString:self.textView.attributedText];
+	NSData *data = [writer buildDocument];
+	[self writeXML:data];
 }
 
 -(NSURL *) getDocURL {
@@ -47,6 +49,44 @@
     
     //return [[NSBundle mainBundle] URLForResource:@"document7" withExtension:@"xml"];
     return docURL;
+}
+
+-(void) fixOtherFile {
+	NSURL *fileURL = [[BSFileHelper sharedHelper] documentsDirectoryURL];
+	fileURL = [fileURL URLByAppendingPathComponent:@"OP/word/settings.xml"];
+	
+	NSData *fileData = [[NSData alloc] initWithContentsOfURL:fileURL];
+	
+	GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:fileData options:0 error:nil];
+	GDataXMLElement *rsid = [[doc.rootElement elementsForName:@"w:rsids"] firstObject];
+	
+	[doc.rootElement removeChild:rsid];
+	
+	GDataXMLElement *newrsid = [GDataXMLElement elementWithName:@"w:rsids"];
+	GDataXMLElement *rsidTag = [GDataXMLElement elementWithName:@"w:rsid"];
+	GDataXMLNode *rsidNode = [GDataXMLNode elementWithName:@"w:val" stringValue:@"00000000"];
+	[rsidTag addAttribute:rsidNode];
+	GDataXMLElement *rsidRoot = [GDataXMLElement elementWithName:@"w:rsidRoot"];
+	GDataXMLNode *rsidRootNode = [GDataXMLNode elementWithName:@"w:val" stringValue:@"00000000"];
+	[rsidRoot addAttribute:rsidRootNode];
+	[newrsid addChild:rsidRoot];
+	[newrsid addChild:rsidTag];
+	rsid = newrsid;
+	
+	[doc.rootElement addChild:rsid];
+	
+	GDataXMLDocument *newdoc = [[GDataXMLDocument alloc] initWithRootElement:doc.rootElement];
+	[newdoc.XMLData writeToURL:fileURL atomically:YES];
+}
+
+-(void) writeXML:(NSData *)data {
+	NSURL *filePath = [[BSFileHelper sharedHelper] documentsDirectoryURL];
+	filePath = [filePath URLByAppendingPathComponent:@"here.xml"];
+	[data writeToURL:filePath atomically:YES];
+	
+	[self fixOtherFile];
+	
+	NSLog(@"done %@", filePath);
 }
 
 - (void)didReceiveMemoryWarning
