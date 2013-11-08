@@ -182,6 +182,24 @@
 		GDataXMLNode *rsidP = [GDataXMLNode elementWithName:@"w:rsidP" stringValue:@"00000000"];
 		[paragraphElement addAttribute:rsidP];
 		
+		// check alignment
+		NSAttributedString *firstRun;
+		for (NSAttributedString *string in paragraph) { // get first non nil string in paragraph
+			if (string.length)
+				firstRun = string;
+		}
+		
+		// read attributes
+		NSDictionary *attrs = [firstRun attributesAtIndex:0 effectiveRange:nil];
+		NSParagraphStyle *style = attrs[NSParagraphStyleAttributeName];
+		// if alignment, add it to pPr
+		if (style) {
+			GDataXMLElement *alignElement = [self getAlignmentElement:style];
+			GDataXMLElement *pPr = [GDataXMLElement elementWithName:@"w:pPr"];
+			[pPr addChild:alignElement];
+			[paragraphElement addChild:pPr];
+		}
+		
 		for (NSAttributedString *runString in paragraph) {
 			GDataXMLElement *runElement = [GDataXMLElement elementWithName:@"w:r"];
 			[runElement addAttribute:rsidR];
@@ -269,6 +287,32 @@
 	[sectPrElement addChild:docGrid];
 	
 	return sectPrElement;
+}
+
+-(GDataXMLElement *) getAlignmentElement:(NSParagraphStyle *)paragraphStyle {
+	GDataXMLElement *alignElement = [GDataXMLElement elementWithName:@"w:jc"];
+	GDataXMLNode *alignNode = [GDataXMLNode elementWithName:@"w:val"];
+	
+	switch (paragraphStyle.alignment) {
+		case NSTextAlignmentCenter:
+			[alignNode setStringValue:@"center"];
+			break;
+		case NSTextAlignmentRight:
+			[alignNode setStringValue:@"right"];
+			break;
+		case NSTextAlignmentLeft:
+			[alignNode setStringValue:@"left"];
+			break;
+		case NSTextAlignmentJustified:
+			[alignNode setStringValue:@"justified"];
+			break;
+		default:
+			break;
+	}
+	
+	[alignElement addAttribute:alignNode];
+	
+	return alignElement;
 }
 
 -(GDataXMLElement *) getFontSizeElement:(UIFont *)font {
