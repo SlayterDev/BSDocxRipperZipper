@@ -63,7 +63,7 @@
 	
 	currentFont = nil;
 	currentFontName = nil;
-	fontSize = 14.0f;
+	fontSize = 12.0f;
 	runIsBold = NO;
 	runIsItalic = NO;
 }
@@ -193,7 +193,7 @@
 }
 
 -(void) checkBoldWithElement:(GDataXMLElement *)element {
-	if (element.XMLString /*&& [element.XMLString hasSuffix:XML_TAG_TRUE]*/) {
+	if (element.XMLString) {
 		NSLog(@"SET BOLD YES");
 		runIsBold = YES;
 		// Give the string bold attributes
@@ -210,7 +210,7 @@
 }
 
 -(void) checkItalicWithElement:(GDataXMLElement *)element {
-	if (element.XMLString /*&& [element.XMLString hasSuffix:XML_TAG_TRUE]*/) {
+	if (element.XMLString) {
 		NSLog(@"SET ITALIC YES");
 		runIsItalic = YES;
 		// Give string italic attributes

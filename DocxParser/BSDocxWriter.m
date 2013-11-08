@@ -205,24 +205,49 @@
 			[runElement addAttribute:rsidR];
 			GDataXMLElement *runPr = [GDataXMLElement elementWithName:@"w:rPr"];
 			
+			// get string attributes
 			NSDictionary *attrs;
 			if (runString.length)
 				attrs = [runString attributesAtIndex:0 effectiveRange:nil];
 			
+			// get font object
 			UIFont *font = attrs[NSFontAttributeName];
 			if (font) {
+				// font size
 				if (font.pointSize) {
 					GDataXMLElement *sizeElement = [self getFontSizeElement:font];
 					[runPr addChild:sizeElement];
 				}
+				
+				// font name
+				GDataXMLElement *fontNameElement = [self fontFamilyNameForFont:font];
+				[runPr addChild:fontNameElement];
+				
+				// bold
+				GDataXMLElement *boldElement = [self getBoldForFont:font];
+				if (boldElement)
+					[runPr addChild:boldElement];
+				
+				// italic
+				GDataXMLElement *italicElement = [self getItalicForFont:font];
+				if (italicElement)
+					[runPr addChild:italicElement];
 			}
 			
+			// get underline value
+			NSNumber *underLineVal = attrs[NSUnderlineStyleAttributeName];
+			if (underLineVal && underLineVal.intValue == NSUnderlineStyleSingle) {
+				[runPr addChild:[self getUnderlineElement]];
+			}
+			
+			// get font color
 			UIColor *color = attrs[NSForegroundColorAttributeName];
 			if (color) {
 				GDataXMLElement *colorElement = [self getFontColorElement:color];
 				[runPr addChild:colorElement];
 			}
 			
+			// get actual text
 			GDataXMLElement *textElement = [GDataXMLElement elementWithName:@"w:t" stringValue:runString.string];
 			GDataXMLNode *spaceNode = [GDataXMLNode elementWithName:@"xml:space" stringValue:@"preserve"];
 			[textElement addAttribute:spaceNode];
@@ -230,6 +255,7 @@
 				continue;
 			}
 			
+			// add children
 			[runElement addChild:runPr];
 			[runElement addChild:textElement];
 			[paragraphElement addChild:runElement];
@@ -323,6 +349,39 @@
 	return sizeElement;
 }
 
+-(GDataXMLElement *) getBoldForFont:(UIFont *)font {
+	if ([font.fontName rangeOfString:@"bold" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+		GDataXMLElement *boldElement = [GDataXMLElement elementWithName:@"w:b"];
+		GDataXMLNode *boldVal = [GDataXMLNode elementWithName:@"w:val" stringValue:@"1"];
+		[boldElement addAttribute:boldVal];
+		
+		return boldElement;
+	} else {
+		return nil;
+	}
+}
+
+-(GDataXMLElement *) getItalicForFont:(UIFont *)font {
+	if ([font.fontName rangeOfString:@"italic" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+		GDataXMLElement *italicElement = [GDataXMLElement elementWithName:@"w:i"];
+		GDataXMLNode *italicVal = [GDataXMLNode elementWithName:@"w:val" stringValue:@"1"];
+		[italicElement addAttribute:italicVal];
+		
+		return italicElement;
+	} else {
+		return nil;
+	}
+}
+
+-(GDataXMLElement *) getUnderlineElement {
+	NSLog(@"*******UNDERLINE");
+	GDataXMLElement *underlineElement = [GDataXMLElement elementWithName:@"w:u"];
+	GDataXMLNode *underlineNode = [GDataXMLNode elementWithName:@"w:val" stringValue:@"single"];
+	[underlineElement addAttribute:underlineNode];
+	
+	return underlineElement;
+}
+
 -(GDataXMLElement *) getFontColorElement:(UIColor *)color {
 	NSString *colorString = [self getHexStringForColor:color];
 	GDataXMLElement *colorElement = [GDataXMLElement elementWithName:@"w:color"];
@@ -330,6 +389,22 @@
 	[colorElement addAttribute:colorNode];
 	
 	return colorElement;
+}
+
+-(GDataXMLElement *) fontFamilyNameForFont:(UIFont *)font {
+	
+	GDataXMLElement *fontNameElement = [GDataXMLElement elementWithName:@"w:rFonts"];
+	GDataXMLNode *csNode = [GDataXMLNode elementWithName:@"w:cs" stringValue:font.familyName];
+	GDataXMLNode *asciiNode = [GDataXMLNode elementWithName:@"w:ascii" stringValue:font.familyName];
+	GDataXMLNode *hAnsiNode = [GDataXMLNode elementWithName:@"w:hAnsi" stringValue:font.familyName];
+	GDataXMLNode *eastAsiaNode = [GDataXMLNode elementWithName:@"w:eastAsia" stringValue:font.familyName];
+	[fontNameElement addAttribute:csNode];
+	[fontNameElement addAttribute:asciiNode];
+	[fontNameElement addAttribute:hAnsiNode];
+	[fontNameElement addAttribute:eastAsiaNode];
+	
+	return fontNameElement;
+	
 }
 
 -(NSString *) getHexStringForColor:(UIColor *)color {
