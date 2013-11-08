@@ -21,6 +21,7 @@
 		02D956B7182B5D4C00A54E79 /* OP.docx in Resources */ = {isa = PBXBuildFile; fileRef = 02D956B6182B5D4C00A54E79 /* OP.docx */; };
 		02E98260182D73560062CC44 /* Test.docx in Resources */ = {isa = PBXBuildFile; fileRef = 02E9825F182D73560062CC44 /* Test.docx */; };
 		02E98262182D73670062CC44 /* Program5.docx in Resources */ = {isa = PBXBuildFile; fileRef = 02E98261182D73670062CC44 /* Program5.docx */; };
+		02E98268182D86230062CC44 /* BSDocxRipperZipper.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E98267182D86230062CC44 /* BSDocxRipperZipper.m */; };
 		02F445F2182A01360081585D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F1182A01360081585D /* Foundation.framework */; };
 		02F445F4182A01360081585D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F3182A01360081585D /* CoreGraphics.framework */; };
 		02F445F6182A01360081585D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F5182A01360081585D /* UIKit.framework */; };
@@ -73,6 +74,8 @@
 		02D956B6182B5D4C00A54E79 /* OP.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = OP.docx; sourceTree = "<group>"; };
 		02E9825F182D73560062CC44 /* Test.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test.docx; sourceTree = "<group>"; };
 		02E98261182D73670062CC44 /* Program5.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Program5.docx; sourceTree = "<group>"; };
+		02E98266182D86230062CC44 /* BSDocxRipperZipper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDocxRipperZipper.h; sourceTree = "<group>"; };
+		02E98267182D86230062CC44 /* BSDocxRipperZipper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDocxRipperZipper.m; sourceTree = "<group>"; };
 		02F445EE182A01360081585D /* DocxParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocxParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F445F1182A01360081585D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02F445F3182A01360081585D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -239,9 +242,9 @@
 		02F44629182A01BB0081585D /* BSDocxParser */ = {
 			isa = PBXGroup;
 			children = (
+				02D956A0182B5CB800A54E79 /* minizip */,
 				02573271182C364100B97B3C /* SSZipArchive.m */,
 				02573272182C364100B97B3C /* SSZipArchive.h */,
-				02D956A0182B5CB800A54E79 /* minizip */,
 				02293D84182ADFCB005F620A /* UIColor+HexString.h */,
 				02293D85182ADFCB005F620A /* UIColor+HexString.m */,
 				02F4462A182A02C60081585D /* GDataXMLNode.h */,
@@ -252,6 +255,8 @@
 				02F44627182A01B60081585D /* BSDocxParser.m */,
 				021D12A8182BDC690002CF57 /* BSDocxWriter.h */,
 				021D12A9182BDC690002CF57 /* BSDocxWriter.m */,
+				02E98266182D86230062CC44 /* BSDocxRipperZipper.h */,
+				02E98267182D86230062CC44 /* BSDocxRipperZipper.m */,
 			);
 			name = BSDocxParser;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 				02F44608182A01360081585D /* ViewController.m in Sources */,
 				02573273182C364100B97B3C /* SSZipArchive.m in Sources */,
 				02F44628182A01B60081585D /* BSDocxParser.m in Sources */,
+				02E98268182D86230062CC44 /* BSDocxRipperZipper.m in Sources */,
 				02D956AD182B5CB800A54E79 /* mztools.c in Sources */,
 				021D12AA182BDC690002CF57 /* BSDocxWriter.m in Sources */,
 				02D956AC182B5CB800A54E79 /* ioapi.c in Sources */,

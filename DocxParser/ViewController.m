@@ -19,15 +19,22 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    BSDocxParser *parser = [[BSDocxParser alloc] initWithFileURL:[self getDocURL]];
+    //BSDocxParser *parser = [[BSDocxParser alloc] initWithFileURL:[self getDocURL]];
+	
+	NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"Test" withExtension:@"docx"];
+	NSURL *localURL = [[[BSFileHelper sharedHelper] documentsDirectoryURL] URLByAppendingPathComponent:@"Test.docx"];
+	[[NSFileManager defaultManager] copyItemAtURL:bundleURL toURL:localURL error:nil];
+	
+	BSDocxParser *parser = [[BSDocxRipperZipper sharedInstance] openDocxAtURL:localURL];
     [parser loadDocument];
     
     self.textView.attributedText = [parser getFinalString];
     self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
 	
-	BSDocxWriter *writer = [[BSDocxWriter alloc] initWithAttributedString:self.textView.attributedText];
-	NSData *data = [writer buildDocument];
-	[self writeXML:data];
+	[[BSDocxRipperZipper sharedInstance] writeStringToDocx:self.textView.attributedText];
+	//BSDocxWriter *writer = [[BSDocxWriter alloc] initWithAttributedString:self.textView.attributedText];
+	//NSData *data = [writer buildDocument];
+	//[self writeXML:data];
 }
 
 -(NSURL *) getDocURL {

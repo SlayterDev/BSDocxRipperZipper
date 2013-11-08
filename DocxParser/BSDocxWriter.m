@@ -374,7 +374,6 @@
 }
 
 -(GDataXMLElement *) getUnderlineElement {
-	NSLog(@"*******UNDERLINE");
 	GDataXMLElement *underlineElement = [GDataXMLElement elementWithName:@"w:u"];
 	GDataXMLNode *underlineNode = [GDataXMLNode elementWithName:@"w:val" stringValue:@"single"];
 	[underlineElement addAttribute:underlineNode];

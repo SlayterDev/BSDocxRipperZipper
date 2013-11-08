@@ -11,6 +11,7 @@
 #import "BSDocxWriter.h"
 #import "BSFileHelper.h"
 #import "SSZipArchive.h"
+#import "BSDocxRipperZipper.h"
 
 @interface ViewController : UIViewController
 
