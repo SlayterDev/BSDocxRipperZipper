@@ -31,7 +31,7 @@
 }
 
 -(NSURL *) getDocURL {
-    NSString *docxPath = [[NSBundle mainBundle] pathForResource:@"Fable" ofType:@"docx"];
+    NSString *docxPath = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"docx"];
     NSString *zipPath = [[[BSFileHelper sharedHelper] getDocumentsDirectory] stringByAppendingPathComponent:@"OP.zip"];
     NSString *unZipPath = [[[BSFileHelper sharedHelper] getDocumentsDirectory] stringByAppendingPathComponent:@"OP"];
     NSError *error;

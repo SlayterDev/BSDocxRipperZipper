@@ -11,6 +11,8 @@
 #define XML_TAG_TRUE			  @"w:val=\"1\"/>"
 #define XML_UNDERLINE_TRUE_SINGLE @"w:val=\"single\"/>"
 
+#define kDEFAULT_FONT @"Arial"
+
 @interface NSMutableAttributedString (RangeExtension)
 - (NSRange)fullRange;
 @end
@@ -172,6 +174,9 @@
 		currentFont = [UIFont fontWithName:fontNode.stringValue size:fontSize];
 		currentFontName = fontNode.stringValue;
 		NSLog(@"Custom Font: %@", fontNode.stringValue);
+	} else {
+		currentFont = [UIFont fontWithName:kDEFAULT_FONT size:fontSize];
+		currentFontName = kDEFAULT_FONT;
 	}
 }
 
