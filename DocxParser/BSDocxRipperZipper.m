@@ -10,16 +10,6 @@
 
 @implementation BSDocxRipperZipper
 
-static BSDocxRipperZipper *_sharedInstance;
-
-+(BSDocxRipperZipper *) sharedInstance {
-	if (_sharedInstance != nil)
-		return _sharedInstance;
-	
-	_sharedInstance = [[BSDocxRipperZipper alloc] init];
-	return _sharedInstance;
-}
-
 -(BSDocxParser *) openDocxAtURL:(NSURL *)fileURL {
 	BSDocxParser *parser = [[BSDocxParser alloc] initWithFileURL:[self getDocURL:fileURL]];
 	self.docxURL = fileURL;

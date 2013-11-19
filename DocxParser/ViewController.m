@@ -25,13 +25,14 @@
 	NSURL *localURL = [[[BSFileHelper sharedHelper] documentsDirectoryURL] URLByAppendingPathComponent:@"Test.docx"];
 	[[NSFileManager defaultManager] copyItemAtURL:bundleURL toURL:localURL error:nil];
 	
-	BSDocxParser *parser = [[BSDocxRipperZipper sharedInstance] openDocxAtURL:localURL];
+	BSDocxRipperZipper *ripperZipper = [[BSDocxRipperZipper alloc] init];
+	BSDocxParser *parser = [ripperZipper openDocxAtURL:localURL];
     [parser loadDocument];
     
     self.textView.attributedText = [parser getFinalString];
     self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
 	
-	[[BSDocxRipperZipper sharedInstance] writeStringToDocx:self.textView.attributedText];
+	[ripperZipper writeStringToDocx:self.textView.attributedText];
 	//BSDocxWriter *writer = [[BSDocxWriter alloc] initWithAttributedString:self.textView.attributedText];
 	//NSData *data = [writer buildDocument];
 	//[self writeXML:data];

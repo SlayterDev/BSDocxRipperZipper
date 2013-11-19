@@ -17,7 +17,6 @@
 @property (nonatomic, strong) NSURL *docxURL;
 @property (nonatomic, strong) NSURL *xmlURL;
 
-+(BSDocxRipperZipper *) sharedInstance;
 -(BSDocxParser *) openDocxAtURL:(NSURL *)fileURL;
 -(void) writeStringToDocx:(NSAttributedString *)string;
 
