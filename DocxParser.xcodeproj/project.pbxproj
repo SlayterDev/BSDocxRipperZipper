@@ -18,9 +18,6 @@
 		02D956AF182B5CB800A54E79 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 02D956A8182B5CB800A54E79 /* zip.c */; };
 		02D956B2182B5CD000A54E79 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D956B1182B5CD000A54E79 /* libz.dylib */; };
 		02D956B5182B5D2200A54E79 /* BSFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D956B4182B5D2200A54E79 /* BSFileHelper.m */; };
-		02D956B7182B5D4C00A54E79 /* OP.docx in Resources */ = {isa = PBXBuildFile; fileRef = 02D956B6182B5D4C00A54E79 /* OP.docx */; };
-		02E98260182D73560062CC44 /* Test.docx in Resources */ = {isa = PBXBuildFile; fileRef = 02E9825F182D73560062CC44 /* Test.docx */; };
-		02E98262182D73670062CC44 /* Program5.docx in Resources */ = {isa = PBXBuildFile; fileRef = 02E98261182D73670062CC44 /* Program5.docx */; };
 		02E98268182D86230062CC44 /* BSDocxRipperZipper.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E98267182D86230062CC44 /* BSDocxRipperZipper.m */; };
 		02F445F2182A01360081585D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F1182A01360081585D /* Foundation.framework */; };
 		02F445F4182A01360081585D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F445F3182A01360081585D /* CoreGraphics.framework */; };
@@ -71,9 +68,6 @@
 		02D956B1182B5CD000A54E79 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		02D956B3182B5D2200A54E79 /* BSFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSFileHelper.h; sourceTree = "<group>"; };
 		02D956B4182B5D2200A54E79 /* BSFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSFileHelper.m; sourceTree = "<group>"; };
-		02D956B6182B5D4C00A54E79 /* OP.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = OP.docx; sourceTree = "<group>"; };
-		02E9825F182D73560062CC44 /* Test.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test.docx; sourceTree = "<group>"; };
-		02E98261182D73670062CC44 /* Program5.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Program5.docx; sourceTree = "<group>"; };
 		02E98266182D86230062CC44 /* BSDocxRipperZipper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDocxRipperZipper.h; sourceTree = "<group>"; };
 		02E98267182D86230062CC44 /* BSDocxRipperZipper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDocxRipperZipper.m; sourceTree = "<group>"; };
 		02F445EE182A01360081585D /* DocxParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocxParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,10 +131,7 @@
 		02D9569F182B56A300A54E79 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
-				02D956B6182B5D4C00A54E79 /* OP.docx */,
 				02573274182C385A00B97B3C /* Fable.docx */,
-				02E9825F182D73560062CC44 /* Test.docx */,
-				02E98261182D73670062CC44 /* Program5.docx */,
 			);
 			name = Documents;
 			sourceTree = "<group>";
@@ -338,11 +329,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				02573275182C391200B97B3C /* Fable.docx in Resources */,
-				02E98262182D73670062CC44 /* Program5.docx in Resources */,
 				02D95698182B4C3400A54E79 /* Main-iPad.storyboard in Resources */,
-				02D956B7182B5D4C00A54E79 /* OP.docx in Resources */,
 				02F4460A182A01360081585D /* Images.xcassets in Resources */,
-				02E98260182D73560062CC44 /* Test.docx in Resources */,
 				02F445FC182A01360081585D /* InfoPlist.strings in Resources */,
 				02F44605182A01360081585D /* Main.storyboard in Resources */,
 			);
