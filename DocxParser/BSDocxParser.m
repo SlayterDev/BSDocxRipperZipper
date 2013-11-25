@@ -50,7 +50,7 @@
     _xmlDoc = [[GDataXMLDocument alloc] initWithData:xmlData options:0 error:&error];
     
     if (!self.xmlDoc) {
-        NSLog(@"Couldn't open");
+        NSLog(@"Couldn't open: %@", error.localizedDescription);
         return;
     }
     
